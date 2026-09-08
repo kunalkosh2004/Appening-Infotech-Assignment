@@ -7,7 +7,9 @@ time slots.
 ## Tech Stack
 - **Frontend:** React 18 (Create React App), plain CSS
 - **Backend:** Python, FastAPI, Pydantic
-- **Database:** SQLite (schema kept adapter-friendly so it can be swapped to PostgreSQL/MySQL)
+- **Database:** SQLite (schema kept adapter-friendly so it can be swapped to PostgreSQL/MySQL).
+  The DB file lives at the project root (`appointments.db`) and ships pre-seeded with sample
+  appointments so a fresh clone immediately shows data.
 
 ## Folder Structure
 ```
@@ -35,7 +37,7 @@ pip install -r requirements.txt
 uvicorn main:app --reload --port 8000
 ```
 - API docs (Swagger): http://localhost:8000/docs
-- 5 sample appointments are auto-seeded on first run.
+- The project ships with a pre-seeded `appointments.db` (10 sample appointments) so a fresh clone shows data. If the DB is missing, it is auto-created and seeded on first run.
 
 ### 2. Frontend (React)
 ```bash
@@ -75,7 +77,7 @@ npm start
 - Completed and cancelled appointments can no longer be marked completed/cancelled again,
   but can still be edited or cancelled (cancellation only blocked once already cancelled
   in the UI, though the API allows resetting status via edit).
-- Data is stored in a local `appointments.db` file. To use PostgreSQL/MySQL, replace the
+- Data is stored in a local `appointments.db` file kept at the project root. To use PostgreSQL/MySQL, replace the
   `sqlite3` connection block in `main.py` with your driver of choice (e.g. `psycopg2` /
   `mysql-connector-python`) — the schema and queries are standard SQL.
 - Dates are `YYYY-MM-DD`; times are 24-hour `HH:MM`.

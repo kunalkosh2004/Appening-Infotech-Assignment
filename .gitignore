@@ -2,7 +2,6 @@
 __pycache__/
 *.py[cod]
 backend/venv/
-backend/appointments.db
 # Note: the repo intentionally tracks the sample appointments.db at the project root so clones see pre-seeded data.
 
 # Node

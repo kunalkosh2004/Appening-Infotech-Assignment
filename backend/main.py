@@ -1,4 +1,5 @@
 from datetime import datetime, date
+import os
 from typing import Optional, List
 
 from fastapi import FastAPI, HTTPException, Depends
@@ -16,7 +17,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-DB_PATH = "appointments.db"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# Store the DB at the project root so it is stable regardless of the
+# current working directory and is tracked by git for pre-seeded clones.
+DB_PATH = os.path.join(BASE_DIR, "..", "appointments.db")
 DATABASE_URL = None  # kept as a placeholder for swapping to PostgreSQL/MySQL
 
 
