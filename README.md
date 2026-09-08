@@ -28,7 +28,28 @@ time slots.
 
 ## How to Run
 
-### 1. Backend (Python / FastAPI)
+### 0. One-command run (recommended) — `run.sh`
+
+A `run.sh` script is included that sets up and launches **both** the backend and frontend
+with a single command. It handles creating the Python venv, installing dependencies, and
+running `npm install` automatically (only on first run).
+
+```bash
+# from the repo root
+./run.sh
+```
+
+That's it. You'll get:
+- Frontend: http://localhost:3000
+- Backend:  http://localhost:8000
+- API docs: http://localhost:8000/docs
+
+Press `Ctrl+C` to stop both servers cleanly.
+
+> Note: if `localhost` conflicts with another service on your machine (e.g. Docker on
+> port 8000), the app uses `127.0.0.1` for API calls to avoid the issue.
+
+### 1. Run manually — Backend (Python / FastAPI)
 ```bash
 cd backend
 python -m venv venv
@@ -39,7 +60,7 @@ uvicorn main:app --reload --port 8000
 - API docs (Swagger): http://localhost:8000/docs
 - The project ships with a pre-seeded `appointments.db` (10 sample appointments) so a fresh clone shows data. If the DB is missing, it is auto-created and seeded on first run.
 
-### 2. Frontend (React)
+### 2. Run manually — Frontend (React)
 ```bash
 cd frontend
 npm install
